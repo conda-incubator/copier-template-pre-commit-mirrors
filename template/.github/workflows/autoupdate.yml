@@ -5,11 +5,6 @@ on:
  schedule:
    - cron: "0 0 * * 0"
 
-defaults:
-  run:
-    shell:
-      bash -el {0}
-
 jobs:
   check_update:
     name: Check if newer version exists
@@ -17,18 +12,24 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Set up Conda env
-        uses: mamba-org/setup-micromamba@f457c30a868e4760d3a6fcea5f25dc655b8edf39 # v3.2.1
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@ad1da6449d9e506fd127fd67ab2d054a769f6a94 # v0.11.2
         with:
-          environment-file: environment.yml
-          environment-name: check-env
+          run-install: false
       - name: Find latest version
         id: versions
         run: |
           pkgname="$(yq '.dependencies[0]' environment.yml | grep -Eio '[a-z0-9_-]+' | head -n 1)"
-          old_version=$(micromamba list -n check-env "$pkgname" --json | jq -r '.[0].version')
-          micromamba update -y -n check-env -a
-          new_version=$(micromamba list -n check-env "$pkgname" --json | jq -r '.[0].version')
+          old_version="$(yq '.dependencies[0]' environment.yml | grep -Eo '[0-9]+(\.[0-9]+)+' | head -n 1)"
+          new_version="$(pixi search --channel conda-forge --platform linux-64 --json "$pkgname" | jq -r '[.[][] | .version] | unique_by(split(".") | map(tonumber? // 0)) | last')"
+          if [[ -z "$old_version" ]]; then
+            echo "Could not determine the current version of $pkgname in environment.yml"
+            exit 1
+          fi
+          if [[ -z "$new_version" || "$new_version" == "null" ]]; then
+            echo "Could not determine the latest version of $pkgname on conda-forge"
+            exit 1
+          fi
           if [[ "$new_version" != "$old_version" ]]; then
             sed -i "s/$old_version/$new_version/g" environment.yml
             echo "pkgname=$pkgname" >> $GITHUB_OUTPUT
