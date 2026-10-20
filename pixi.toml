@@ -12,7 +12,6 @@ test = "pytest"
 [dependencies]
 copier = ">=9.1.1,<9.2"
 jq = ">=1.7,<2"
-pixi = ">=0.74,<1"
 pytest = ">=7.4.4,<7.5"
 pytest-emoji = ">=0.2.0,<0.3"
 pytest-md = ">=0.2.0,<0.3"

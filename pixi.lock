@@ -60,7 +60,6 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/linux-64/openssl-3.6.5-h781a0a9_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pcre2-10.45-hc749103_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/perl-5.32.1-7_hd590300_perl5.conda
-      - conda: https://conda.anaconda.org/conda-forge/linux-64/pixi-0.82.0-hb5a6893_2.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pydantic-core-2.33.2-py313h4b2b08d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/pynacl-1.5.0-py313h536fd9c_4.conda
       - conda: https://conda.anaconda.org/conda-forge/linux-64/python-3.13.5-hec9711d_102_cp313.conda
@@ -173,7 +172,6 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-64/openssl-3.5.1-hc426f3f_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/pcre2-10.45-hf733adb_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/perl-5.32.1-7_h10d778d_perl5.conda
-      - conda: https://conda.anaconda.org/conda-forge/osx-64/pixi-0.82.0-h05a3dc4_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/pydantic-core-2.33.2-py313hb35714d_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/pynacl-1.5.0-py313ha37c0e0_4.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-64/python-3.13.5-hc3a4c56_102_cp313.conda
@@ -249,7 +247,6 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/openssl-3.5.1-h81ee809_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pcre2-10.45-ha881caa_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/perl-5.32.1-7_h4614cfb_perl5.conda
-      - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pixi-0.82.0-h0a96426_2.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pydantic-core-2.33.2-py313hf3ab51e_0.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pynacl-1.5.0-py313h20a7fcf_4.conda
       - conda: https://conda.anaconda.org/conda-forge/osx-arm64/python-3.13.5-hf3f3da0_102_cp313.conda
@@ -690,21 +687,6 @@ packages:
   license: GPL-1.0-or-later OR Artistic-1.0-Perl
   size: 13344463
   timestamp: 1703310653947
-- conda: https://conda.anaconda.org/conda-forge/linux-64/pixi-0.82.0-hb5a6893_2.conda
-  sha256: 1098756ddd6a0c8ae552d9491124d70294a992a893389ecd30ef74389292b97a
-  md5: 15c8adf4e17667a64a0de31ee9c40b5e
-  depends:
-  - __glibc >=2.17,<3.0.a0
-  - libstdcxx >=15
-  - libgcc >=15
-  - openssl >=3.5.9,<4.0a0
-  constrains:
-  - __glibc >=2.17
-  license: BSD-3-Clause
-  license_family: BSD
-  run_exports: {}
-  size: 32044994
-  timestamp: 1792395218707
 - conda: https://conda.anaconda.org/conda-forge/linux-64/pydantic-core-2.33.2-py313h4b2b08d_0.conda
   sha256: 754e3739e4b2a8856573e75829a1cccc0d16ee59dbee6ad594a70728a90e2854
   md5: 04b21004fe9316e29c92aa3accd528e5
@@ -1514,19 +1496,6 @@ packages:
   license: GPL-1.0-or-later OR Artistic-1.0-Perl
   size: 12334471
   timestamp: 1703311001432
-- conda: https://conda.anaconda.org/conda-forge/osx-64/pixi-0.82.0-h05a3dc4_2.conda
-  sha256: 381702f815693a2fc9c9bc68265e080c576c2d6c9ef24c3d4d223ad9b9c1ade5
-  md5: a4bba9ea4c109920bf1f9be18ead8bf3
-  depends:
-  - libcxx >=21
-  - __osx >=11.0
-  constrains:
-  - __osx >=11.0
-  license: BSD-3-Clause
-  license_family: BSD
-  run_exports: {}
-  size: 33135786
-  timestamp: 1792395223872
 - conda: https://conda.anaconda.org/conda-forge/osx-64/pydantic-core-2.33.2-py313hb35714d_0.conda
   sha256: 84b5d39c74f8578722b0fc40b6c0a862cff590549ff74abfe88210f98526fa62
   md5: d005389707c7f9ccc4f86933b4649708
@@ -1943,19 +1912,6 @@ packages:
   license: GPL-1.0-or-later OR Artistic-1.0-Perl
   size: 14439531
   timestamp: 1703311335652
-- conda: https://conda.anaconda.org/conda-forge/osx-arm64/pixi-0.82.0-h0a96426_2.conda
-  sha256: 0c79010f66861c27afffe26ac077e1d00428f86569f8356d191ae4b0a5a8003b
-  md5: 60f7a6a8a0bf9f8e5e9f9393e9cb1a52
-  depends:
-  - __osx >=11.0
-  - libcxx >=21
-  constrains:
-  - __osx >=11.0
-  license: BSD-3-Clause
-  license_family: BSD
-  run_exports: {}
-  size: 29237844
-  timestamp: 1792395273676
 - conda: https://conda.anaconda.org/conda-forge/osx-arm64/pydantic-core-2.33.2-py313hf3ab51e_0.conda
   sha256: a70d31e04b81df4c98821668d87089279284d2dbcc70413f791eaa60b28f42fd
   md5: 0d5685f410c4234af909cde6fac63cb0
