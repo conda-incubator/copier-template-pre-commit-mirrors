@@ -22,8 +22,15 @@ jobs:
     steps:
       - name: Checkout branch
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - name: Set up Conda env
-        uses: mamba-org/setup-micromamba@f457c30a868e4760d3a6fcea5f25dc655b8edf39 # v3.2.1
+      - name: Set up pixi
+        uses: prefix-dev/setup-pixi@ad1da6449d9e506fd127fd67ab2d054a769f6a94 # v0.11.2
         with:
-          environment-file: environment.yml
-          environment-name: test-env
+          run-install: false
+      - name: Check that the environment is installable
+        run: |
+          workspace="$RUNNER_TEMP/check-env"
+          pixi init --channel conda-forge --platform linux-64 "$workspace"
+          # `nodefaults` is a conda only marker that pixi does not understand
+          yq 'del(.channels[] | select(. == "nodefaults"))' environment.yml > "$RUNNER_TEMP/environment.yml"
+          pixi import --manifest-path "$workspace/pixi.toml" --format conda-env --environment default "$RUNNER_TEMP/environment.yml"
+          pixi install --manifest-path "$workspace/pixi.toml"
