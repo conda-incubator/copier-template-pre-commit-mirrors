@@ -1,7 +1,7 @@
 exclude: ^\.copier-answers\.yml$
 repos:
   - repo: https://github.com/Quantco/pre-commit-mirrors-pre-commit-hooks
-    rev: 5.0.0
+    rev: fc0091ab4e505132ff6e300a8e504c22aa398a4b  # frozen: 5.0.0
     hooks:
       - id: trailing-whitespace-conda
       - id: end-of-file-fixer-conda
